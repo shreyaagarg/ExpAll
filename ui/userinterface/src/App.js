@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import './HomePage.js';
+
 import hey from './pages/hey.js';
 
 class App extends Component {
@@ -24,12 +25,19 @@ class App extends Component {
 
                     <button onClick={this.feelinglucky()}>feeling lucky</button>
                 </center>
-                <a href="">signup</a>
+
+                <Route render={({ history}) => (
+                    <button
+                        type='button'
+                        onClick={() => { history.push('/pages/hey') }}
+                    >
+                        Click Me!
+                    </button>
+                )} />
+
                 <NavLink to="/call">Login</NavLink>;
                 <Route path="/call" component={hey}>
                 </Route>
-
-
             </div>
             </Router>
         );

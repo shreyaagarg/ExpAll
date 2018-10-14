@@ -1,0 +1,3 @@
+java -Xmx1024m -jar maui-standalone-1.1-SNAPSHOT.jar train -l data/docs/fao_train/ -m data/models/keyword_extraction_model -v none -o 2
+
+java -Xmx1024m -jar maui-standalone-1.1-SNAPSHOT.jar run 'file-name' -m data/models/keyword_extraction_model -v none -n 8

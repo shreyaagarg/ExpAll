@@ -3,8 +3,6 @@ import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 import SignInForm from './SignInForm';
 import './hey.css';
-
-
 class hey extends Component {
     render() {
         return (
