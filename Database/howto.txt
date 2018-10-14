@@ -1,0 +1,6 @@
+cd "C:\Users\isha gupta\Desktop\project"
+javac HTMLUtils.java
+jar cfm HTMLUtils.jar manifest.txt *.class
+java -jar HTMLUtils.jar
+
+repeat these steps everytime changes are made
