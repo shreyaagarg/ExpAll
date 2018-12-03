@@ -53,13 +53,16 @@ public class Search {
     for( String s : keyWords )
     {
             ArrayList<String> temp=new ArrayList();
+            
             boolean bin = hash_obj.myHash.containsKey(s);
             if(!bin)
             {
                 try{
                     Statement stmt=con.createStatement();
                     String query="select link,count from indexed where keyword='"+s+"'";
+                   
                     ResultSet rs = stmt.executeQuery(query);
+                   
                         while (rs.next()) 
                             {
                             String l = rs.getString("link");
@@ -71,11 +74,14 @@ public class Search {
                                 list.add(l);
                             }
                             }
+                       
                     }
                 catch(SQLException e)
                     {
                     }
+                
             }
+            
     }
 	Set<String> st = new HashSet<String>(list);
 	ArrayList<obj> arr = new ArrayList<obj>();
@@ -89,8 +95,56 @@ public class Search {
 	{
 		System.out.println(e);
 	}
-    return result;
-    }
+  
+        return result;
     
+    }
+    public static ArrayList <String> ex(String myQuery)
+    {
+    hash_obj.go();
+    String[] keyWords=myQuery.split("\\s+");
+    //ArrayList <String> result=new ArrayList <String>();
+    ArrayList<String> t=new ArrayList<String>();
+    try
+	{
+    Class.forName("com.mysql.cj.jdbc.Driver");    
+    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/expall?autoReconnect=true&useSSL=false", "root","");
+	ArrayList<String> list = new ArrayList<String>(); 
+    for( String s : keyWords )
+    {
+            ArrayList<String> temp=new ArrayList();
+            
+            boolean bin = hash_obj.myHash.containsKey(s);
+            if(!bin)
+            {
+                try{
+                    Statement stmt=con.createStatement();
+                    
+                    String q="select answer from user_table where query='"+s+"'";
+                    
+                    ResultSet rst=stmt.executeQuery(q);
+                       
+                        while(rst.next())
+                        {
+                           String ans=rst.getString("answer");
+                           t.add(ans);
+                         }
+                    }
+                catch(SQLException e)
+                    {
+                    }
+                
+            }
+            
+    }
+	
+	}
+	catch(Exception e)
+	{
+		System.out.println(e);
+	}
+   
+        return t;
+    
+    }
 }
-
