@@ -40,7 +40,7 @@
                 } 
                 
             }
-          if(disp.isEmpty()) 
+          if(links.isEmpty()&&disp.isEmpty()) 
           {%>
             <p> OOPS you seem to have entered a wrong query!!! go back and query again!!!</p>
             <%
