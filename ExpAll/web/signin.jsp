@@ -117,17 +117,16 @@ $('.message a').click(function(){
 </script>
 </head>
 <body>
-    <form method="post" action="login.jsp">
 <div class="login-page">
   <div class="form">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
+    <form class="register-form" action="login.jsp">
+      <input type="text" name="name" placeholder="name"/>
+      <input type="password" name="pass" placeholder="password"/>
       <input type="text" placeholder="email address"/>
       <button>create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
-    <form class="login-form">
+    <form class="login-form" action="login.jsp">
       <input type="text" name="name" placeholder="username"/>
       <input type="password" name="pass" placeholder="password"/>
       <button>login</button>
