@@ -9,6 +9,7 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%ResultSet rs =null;%>
 <%
     if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
 %>
@@ -20,35 +21,38 @@ Welcome <%=session.getAttribute("userid")%>
 <p>The queries to be addressed are:- </p>
 <html>
     <body>
+        <form METHOD=POST ACTION="ans.jsp">
 <%
 Class.forName("com.mysql.cj.jdbc.Driver");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/expall?autoReconnect=true&useSSL=false", "root","");
     Statement st = con.createStatement();
      String query="select keyword from query_ans ";
-    ResultSet rs = st.executeQuery(query);
-    ArrayList<String> User  = new ArrayList();
+     rs = st.executeQuery(query);
+    
+    //ArrayList<String> User  = new ArrayList();%>
+    <select name="ans">
+        <%
     while(rs.next())
+    { %>
+            <option><%= rs.getString("keyword")%></option>
+        <% } %>
+        </select>
+        <br><br>
+        <input type="submit">
+  <!--  for(String i : User)
     {
-        User.add(rs.getString("keyword"));
-       
-       
-        }
-    for(String i : User)
-    {
-        request.setAttribute("ans",i);
-        out.write("<input type=\"text\" name=\"ans\" id=\"hey\" value=\""+i+"\"/>");
+        //request.setAttribute("ans",i);
+        
+        out.write("<input type=\"text\" name=\"ans\" value=\""+i+"\"/>");
         out.write("&nbsp;&nbsp;&nbsp;&nbsp;");
-        out.write("<input type=\"button\" value=\"submit\" onclick=\"myfn()\" id=\""+i+"\" ");
+        out.write("<input type=\"SUBMIT\" value=\"submit\" name=\""+i+"\" ");
         out.write("<br>");
         out.write("<br/>");
     }
-%>
-<script>
-    function myfn()
-    {
-        window.location = "ans.jsp";
-    }
-</script>
+    
+%>-->
+
+        </form>
     </body>
 </html>
 

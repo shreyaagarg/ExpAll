@@ -51,9 +51,9 @@ body {
 <center>
 <h1 style="font-size:49px;margin-top:200px;"><span style="color:blue">E</span><span style="color:#CE2029">x</span><span style="color:#ffdb58">p</span><span style="color:blue">A</span><span style="color:green">l</span><span style="color:#CE2029">l</span></h1>
 <form method="post" action="displaylinks.jsp" name="quering">
-    <LABEL for="search"></LABEL><input type="text" name="query" width="150"/><br><br>
-<button type="submit"> Expall search </a> </button>
-</center>
+    <LABEL for="search"></LABEL><input type="text" name="query"/><br><br>
+    <input type="submit" value="Expall search">
 </form>
+</center>
 </body>
 </html>

@@ -9,6 +9,10 @@
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+   String name = request.getParameter( "ans" );
+   session.setAttribute( "theans", name );
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,15 +20,14 @@
     </head>
     
     <body>
-        <script>
-        function myfn()
-        {
-            window.location = "print.jsp";
-        }
-    </script>
-        <input type="text" id="answer" placeholder="Write the answer to submit" />
         
-        <input type="button" value="Submit" onClick="myfn()">
+    <form name="myform" method="POST" action="print.jsp">
+        <p> The query to be answered is <%= session.getAttribute( "theans" ) %></p>
+        <br>
+        <INPUT TYPE=TEXT NAME=username SIZE=20 placeholder="Enter the answer you want to submit.">
+        
+        <input type="SUBMIT" value="Submit">
+    </form>
     </body>
     
 </html>
